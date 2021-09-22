@@ -1,0 +1,19 @@
+#!/bin/sh
+
+config_file="$HOME/.config/homebrew/explicit"
+if [ ! -r "$config_file" ]; then
+    printf "\033[31mNo config found at %s\033[0m\n" "$config_file"
+    exit 1
+fi
+
+any_removed=true
+while [ $any_removed = 'true' ]; do
+    any_removed=false;
+    for installed in $(brew list --formulae); do
+        if ! grep "$installed" "$config_file"; then
+            if brew uninstall "$installed" 2>/dev/null; then
+                any_removed=true
+            fi
+        fi
+    done
+done
