@@ -1,9 +1,11 @@
 # explicit-homebrew
 [Homebrew](https://brew.sh) is the absolute best.
 
-Except... if you install a package to try it, and remove it later, the dependencies of the now removed package are still installed.
+Except... if you install a package to try it, and remove it later, the dependencies of the, now removed, package are still installed.
 
-So this utility is very simple.
+Instead, this uninstalls everything except what you list, and dependencies thereof.
+
+## Setup
 Add a new file at `~/.config/homebrew/explicit`, and list the programs you actually want. One per line.
 
 For example...
